@@ -12,5 +12,5 @@ def heroes_list():
 
 
 @app.route('/heroe/<name>')
-def heroes_list():
+def heroe_list():
     pass
