@@ -1,5 +1,7 @@
-from app import app
+from app import app, db
 from flask import jsonify, make_response, render_template, request, redirect
+from .models import *
+
 
 
 @app.route("/")
@@ -8,9 +10,10 @@ def index():
 
 @app.route('/heroes_list')
 def heroes_list():
-    pass
-
+    heroes = Heroes.query.all()
+    return render_template('all_heroes.html', heroes=heroes)
 
 @app.route('/heroe/<name>')
-def heroe_list():
-    pass
+def heroe_list(name):
+    name = Heroes.name
+    return render_template('heroe.html', name=name)
