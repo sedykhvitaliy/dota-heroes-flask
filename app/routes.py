@@ -14,6 +14,8 @@ def heroes_list():
     return render_template('all_heroes.html', heroes=heroes)
 
 @app.route('/heroe/<name>')
-def heroe_list(name):
-    name = Heroes.name
-    return render_template('heroe.html', name=name)
+def heroe_card(name):
+    heroe = Heroes.query.filter(Heroes.name==name).first()
+    if heroe is not None:
+        return render_template('heroe.html', heroe=heroe)
+    return render_template('404.html',name=name), 404
