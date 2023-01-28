@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, bootstrap
 from flask import jsonify, make_response, render_template, request, redirect
 from .models import *
 
@@ -11,7 +11,7 @@ def index():
 @app.route('/heroes_list')
 def heroes_list():
     heroes = Heroes.query.all()
-    return render_template('all_heroes.html', heroes=heroes)
+    return render_template('all_heroes.html', heroes=heroes, bootstrap=bootstrap)
 
 @app.route('/heroe/<name>')
 def heroe_card(name):
