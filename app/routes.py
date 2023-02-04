@@ -6,7 +6,7 @@ from .models import *
 
 @app.route("/")
 def index():
-    return "Dota heroes"
+    return render_template('main_page.html', bootstrap=bootstrap)
 
 @app.route('/heroes_list')
 def heroes_list():

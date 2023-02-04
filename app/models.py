@@ -33,3 +33,10 @@ class Heroes_info(db.Model):
     class_heroes = db.Column(db.Integer, nullable=False)
     meta = db.Column(db.Integer, nullable=False)
     is_alliance = db.Column(db.Integer, nullable=False)
+
+
+class Link(db.Model):
+    __tablename__ = "db_links"
+
+    id_links = db.Column(db.Integer, primary_key=True)
+
