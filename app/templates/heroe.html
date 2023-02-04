@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <title>{{ heroe.name }}</title>
+    {% endblock %}
+</head>
+<body style="text-align:center">
+<!-- Your page content -->
+{% block content %}
+<div class="card" style="text-align: center">
+  <div class="card-body">
+    <h3 class="card-title">{{ heroe.name }}</h3>
+    <h4 class="card-subtitle mb-2 text-muted">Герой из доты</h4>
+    <p class="card-text">Для дополнительной информации переходите на ссылку ниже.</p>
+    <a href="#" class="card-link">Информация о герое</a>
+{% endblock %}
+</div>
+    </div>
+{% block scripts %}
+<!-- Optional JavaScript -->
+{{ bootstrap.load_js() }}
+{% endblock %}
+</body>
+</html>

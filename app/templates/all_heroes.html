@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <title>ALL HEROES LIST</title>
+    {% endblock %}
+</head>
+<body style="text-align:center">
+<!-- Your page content -->
+{% block content %}
+<div class="list-group" >
+    {% for heroe in heroes %}
+        <a href="http://127.0.0.1:5000/heroe/" class="list-group-item list-group-item-action">{{heroe.id_heroes}} {{heroe.name}} </a>
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block scripts %}
+<!-- Optional JavaScript -->
+{{ bootstrap.load_js() }}
+{% endblock %}
+</body>
+</html>
