@@ -1,22 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    {% block head %}
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{% block styles %}
-<!-- Bootstrap CSS -->
-{{ bootstrap.load_css() }}
-{% endblock %}
-
-<title>MAIN PAGE</title>
-{% endblock %}
-</head>
-<body style="text-align:center">
-<!-- Your page content -->
+{% extends "base.html" %}
 {% block content %}
-<div class="jumbotron" style="text-align:center">
+<div class="jumbotron" style="text-align:center; ">
   <h1 class="display-4">Привет, читатели!</h1>
   <p class="lead">Это база данных героев из Dota 2 на FLASK.</p>
   <hr class="my-4">
@@ -24,11 +8,3 @@
   <a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/heroes_list" role="button">Все герои</a>
 </div>
 {% endblock %}
-{% block scripts %}
-
-<!-- Optional JavaScript -->
-
-{% endblock %}
-
-</body>
-</html>
