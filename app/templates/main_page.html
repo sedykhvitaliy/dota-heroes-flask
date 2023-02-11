@@ -5,6 +5,6 @@
   <p class="lead">Это база данных героев из Dota 2 на FLASK.</p>
   <hr class="my-4">
   <p>Нажав на эту кнопку вы сможете увидеть список всех героев.</p>
-  <a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/heroes_list" role="button">Все герои</a>
+  <a class="btn btn-primary btn-lg" href="{{ url_for('heroes_list') }}" role="button">Все герои</a>
 </div>
 {% endblock %}

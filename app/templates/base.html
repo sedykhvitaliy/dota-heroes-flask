@@ -10,7 +10,7 @@
     {{ bootstrap.load_css() }}
     {% endblock %}
 
-    <title>aaa</title>
+    <title>Main page</title>
     {% endblock %}
 </head>
 <body>
@@ -33,6 +33,7 @@
     </form>
   </div>
 </nav>
+
 <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -49,9 +50,12 @@
     </form>
   </div>
 </nav>-->
+<div class="has-bg-img">
 {% block content %}
 
 {% endblock %}
+<img src="{{ url_for('static', filename = 'img/dota2.jpg') }}" class="bg-img">
+</div>
 {% block scripts %}
 
 <!-- Optional JavaScript -->
