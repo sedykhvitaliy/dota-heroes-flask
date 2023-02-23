@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends 'bootstrap/base.html' %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="jumbotron" style="text-align:center; ">
   <h1 class="display-4">Привет, читатели!</h1>

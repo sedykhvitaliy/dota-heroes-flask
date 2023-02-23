@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends 'bootstrap/base.html' %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
 <body style="text-align:center">
 <!-- Your page content -->
 {% block content %}
@@ -11,11 +16,6 @@
 {% endfor %}
 
 
-{% endblock %}
-
-{% block scripts %}
-<!-- Optional JavaScript -->
-{{ bootstrap.load_js() }}
 {% endblock %}
 </body>
 </html>

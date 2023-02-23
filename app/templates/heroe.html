@@ -1,9 +1,16 @@
-{% extends "base.html" %}
+{% extends 'bootstrap/base.html' %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="card" style="text-align: center; width: 18rem">
     <div class="card-body">
         <h3 class="card-title">{{ heroe.name }}</h3>
         <h4 class="card-subtitle mb-2 text-muted">Герой из доты</h4>
+        <p class="card-text">{{ stats.hp }}</p>
+        <p class="card-text">Для дополнительной информации переходите на ссылку ниже.</p>
         <p class="card-text">Для дополнительной информации переходите на ссылку ниже.</p>
         <a href="#" class="card-link">Информация о герое</a>
     </div>

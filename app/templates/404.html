@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends 'bootstrap/base.html' %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
 {% block content %}
 <p class="bg-danger">Heroe {{ name }} not found in database</p>
 {% endblock %}
