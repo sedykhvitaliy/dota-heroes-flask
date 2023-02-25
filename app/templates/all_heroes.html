@@ -9,7 +9,7 @@
 {% block content %}
 <div class="list-group ">
     {% for heroe in heroes %}
-    <a href="{{ url_for('heroe_card', name = heroe.name) }}" class="list-group-item list-group-item-action">{{heroe.id_heroes}}
+    <a href="{{ url_for('heroe_card', name = heroe.name) }}" class="list-group-item list-group-item-action">
         {{heroe.name}} </a>
 
 </div>
