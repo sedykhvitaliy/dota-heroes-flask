@@ -9,3 +9,8 @@ class AddNewHeroe(FlaskForm):
     role = IntegerField("Роль героя", validators=[InputRequired()])
     email = EmailField("Email", validators=[Email()])
     submit = SubmitField("Добавить")
+
+class HeroeCard(FlaskForm):
+    name = StringField("Имя героя", validators=[InputRequired()])
+    cost = IntegerField("Стоимость героя", validators=[InputRequired()])
+    role = IntegerField("Роль героя", validators=[InputRequired()])

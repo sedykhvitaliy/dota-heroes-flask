@@ -1,7 +1,7 @@
 from app import app, bootstrap, db
 from flask import jsonify, make_response, render_template, request, redirect, url_for
 
-from .forms import AddNewHeroe
+from .forms import AddNewHeroe, HeroeCard
 from .models import *
 
 
@@ -15,11 +15,14 @@ def heroes_list():
     heroes = Heroes.query.all()
     return render_template('all_heroes.html', heroes=heroes, bootstrap=bootstrap)
 
-@app.route('/heroe/<name>')
+@app.route('/heroe/<name>', methods=['GET', 'POST'])
 def heroe_card(name):
     heroe = Heroes.query.filter(Heroes.name==name).first()
     if heroe is not None:
-        return render_template('heroe.html', heroe=heroe, stats=Stats.query.all())
+        form = HeroeCard(obj=heroe)
+        if request.method == 'POST':
+            print('post')
+        return render_template('heroe.html', form=form, heroe=heroe)
     return render_template('404.html',name=name), 404
 
 @app.route('/heroe/new', methods=['GET', 'POST'])
@@ -38,26 +41,16 @@ def heroe_add():
             return redirect('/')
     return render_template('heroe_add.html',form=form)
 
-@app.route('/heroe/heroe/edit/', methods=('GET', 'POST'))
+@app.route('/heroe/edit/<id_heroes>', methods=('GET', 'POST'))
 def heroe_edit(id_heroes):
     heroe = Heroes.query.get_or_404(id_heroes)
 
     if request.method == 'POST':
-        name = request.form['name']
-        cost = request.form['cost']
-        role = request.form['role']
-        email = (request.form['email'])
+        print('heroe_edit', id_heroes)
 
+@app.route('/heroe/delete/<id_heroes>', methods=('GET', 'POST'))
+def heroe_delete(id_heroes):
+    heroe = Heroes.query.get_or_404(id_heroes)
 
-        heroe.name = name
-        heroe.cost = cost
-        heroe.email = email
-        heroe.role = role
-
-
-        db.session.add(heroe)
-        db.session.commit()
-
-        return redirect(url_for('index'))
-
-    return render_template('heroe_edit.html', heroe=heroe)
+    if request.method == 'POST':
+        print('heroe_delete', id_heroes)

@@ -1,4 +1,5 @@
 {% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block navbar %}
 {% include "navbar.html" %}
@@ -7,12 +8,13 @@
 {% block content %}
 <div class="card" style="text-align: center; width: 18rem">
     <div class="card-body">
-        <h3 class="card-title">{{ heroe.name }}</h3>
-        <h4 class="card-subtitle mb-2 text-muted">Герой из доты</h4>
-        <p class="card-text">{{ stats.hp }}</p>
-        <p class="card-text">Для дополнительной информации переходите на ссылку ниже.</p>
-        <p class="card-text">Для дополнительной информации переходите на ссылку ниже.</p>
-        <a href="#" class="card-link">Информация о герое</a>
+        {{ wtf.quick_form(form, button_map={'submit_button': 'success'}) }}
+        <form method="POST" action="{{ url_for('heroe_edit', id_heroes=heroe.id_heroes|int) }}">
+            <input type="submit" class="btn btn-secondary btn-block btn-sm" value="Изменить">
+        </form>
+        <form method="POST" action="{{ url_for('heroe_delete', id_heroes=heroe.id_heroes|int) }}">
+            <input type="submit" class="btn btn-danger btn-block btn-sm" value="Удалить">
+        </form>
     </div>
 </div>
 {% endblock %}
