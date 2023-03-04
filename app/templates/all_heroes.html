@@ -7,6 +7,16 @@
 <body style="text-align:center">
 <!-- Your page content -->
 {% block content %}
+{% if alert=='success' %}
+    <div class="alert alert-success" role="alert">
+    Герой добавлен!
+    </div>
+{% endif %}
+{% if alert=='danger' %}
+    <div class="alert alert-danger" role="alert">
+    Герой удален!
+    </div>
+{% endif %}
 <div class="list-group ">
     {% for heroe in heroes %}
     <a href="{{ url_for('heroe_card', name = heroe.name) }}" class="list-group-item list-group-item-action">

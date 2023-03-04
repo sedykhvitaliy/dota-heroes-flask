@@ -11,9 +11,9 @@ def index():
     return render_template('main_page.html', bootstrap=bootstrap)
 
 @app.route('/heroes_list')
-def heroes_list():
+def heroes_list(alert=None):
     heroes = Heroes.query.all()
-    return render_template('all_heroes.html', heroes=heroes, bootstrap=bootstrap)
+    return render_template('all_heroes.html', heroes=heroes, bootstrap=bootstrap, alert=alert)
 
 @app.route('/heroe/<name>', methods=['GET', 'POST'])
 def heroe_card(name):
@@ -38,7 +38,7 @@ def heroe_add():
             db.session.add(heroe)
             db.session.commit()
             print('Добавлен новый герой пользователем: ', email)
-            return redirect('/')
+            return heroes_list('success')
     return render_template('heroe_add.html',form=form)
 
 @app.route('/heroe/edit/<id_heroes>', methods=('GET', 'POST'))
@@ -59,6 +59,6 @@ def heroe_delete(id_heroes):
     if request.method == 'POST':
         db.session.delete(heroe)
         db.session.commit()
-        return heroes_list()
+        return heroes_list('danger')
     else:
         return render_template('heroe.html', heroe=heroe)
