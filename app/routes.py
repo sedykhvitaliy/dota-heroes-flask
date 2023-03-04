@@ -44,13 +44,21 @@ def heroe_add():
 @app.route('/heroe/edit/<id_heroes>', methods=('GET', 'POST'))
 def heroe_edit(id_heroes):
     heroe = Heroes.query.get_or_404(id_heroes)
-
+    form = HeroeCard()
     if request.method == 'POST':
-        print('heroe_edit', id_heroes)
+        db.session.update(heroe)
+        db.session.commit()
+        return render_template('heroe.html', id_heroes=id_heroes, form=form, heroe=heroe)
+    else:
+        return render_template('heroe.html', heroe=heroe)
 
 @app.route('/heroe/delete/<id_heroes>', methods=('GET', 'POST'))
 def heroe_delete(id_heroes):
     heroe = Heroes.query.get_or_404(id_heroes)
-
+    form = HeroeCard()
     if request.method == 'POST':
-        print('heroe_delete', id_heroes)
+        db.session.delete(heroe)
+        db.session.commit()
+        return heroes_list()
+    else:
+        return render_template('heroe.html', heroe=heroe)
