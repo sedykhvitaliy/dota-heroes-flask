@@ -14,3 +14,4 @@ class HeroeCard(FlaskForm):
     name = StringField("Имя героя", validators=[InputRequired()])
     cost = IntegerField("Стоимость героя", validators=[InputRequired()])
     role = IntegerField("Роль героя", validators=[InputRequired()])
+
