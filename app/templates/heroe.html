@@ -34,11 +34,15 @@
                     <input type="text" class="form-control" id="role" name="role" value="{{heroe.role}}">
                 </div>
             </div>
+            {% if current_user.is_authenticated %}
             <input type="submit" class="btn btn-success btn-block btn-sm" value="Изменить">
+            {% endif %}
         </form>
+        {% if current_user.administrator and current_user.is_authenticated %}
         <form method="POST" action="{{ url_for('heroe_delete', id_heroes=heroe.id_heroes|int) }}">
             <input type="submit" class="btn btn-danger btn-block btn-sm" value="Удалить">
         </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

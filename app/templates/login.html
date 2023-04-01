@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class=container"><br>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-6">
+            <h2>Авторизация</h2>
+            {{ wtf.quick_form(form, button_map={'submit_button': 'success'}) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

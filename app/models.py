@@ -1,5 +1,8 @@
+from flask_login import UserMixin
+
 from app import db
 from sqlalchemy import ForeignKey
+
 
 
 
@@ -43,3 +46,16 @@ class Link(db.Model):
 
     id_links = db.Column(db.Integer, primary_key=True)
 
+class User(db.Model, UserMixin):
+    __tablename__ = "db_users"
+
+    email = db.Column(db.String(250), nullable=False, unique=True, primary_key=True)
+    password = db.Column(db.String(250), nullable=False)
+    administrator = db.Column(db.Boolean, default=False)
+    authenticated = db.Column(db.Boolean, default=False)
+
+    def get_id(self):
+        return self.email
+
+    def is_authenticated(self):
+        return self.authenticated

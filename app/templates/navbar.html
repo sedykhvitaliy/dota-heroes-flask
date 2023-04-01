@@ -7,9 +7,23 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('heroes_list') }}">Все герои</a>
       </li>
+
+
+      {% if not current_user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Авторизация</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/registration">Регистрация</a>
+    </li>
+    {% else %}
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('heroe_add') }}">Добавить</a>
       </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Выйти</a>
+    </li>
+    {% endif %}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
