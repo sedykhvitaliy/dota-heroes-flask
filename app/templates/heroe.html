@@ -8,11 +8,14 @@
 {% block content %}
 <div class="card" style="text-align: center; width: 25rem">
     <img src="..." class="card-img-top" alt="...">
-    <form>
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Выберите картинку</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
+     <!--<form>
+      <input type="file" id="imgLoader" name="imgLoader" accept="image/*">
+      <br>
+      <img id="preview" src="#" alt="Image preview" style="display: none;">
+    </form>-->
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
     </form>
     <div class="card-body">
         <h5 class="card-title">{{heroe.name}}</h5>

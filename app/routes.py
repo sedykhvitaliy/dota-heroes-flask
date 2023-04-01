@@ -1,5 +1,9 @@
+import os
+
+from werkzeug.utils import secure_filename
+
 from app import app, bootstrap, db
-from flask import jsonify, make_response, render_template, request, redirect, url_for
+from flask import jsonify, make_response, render_template, request, redirect, url_for, flash
 
 from .forms import AddNewHeroe, HeroeCard
 from .models import *
@@ -21,7 +25,21 @@ def heroe_card(name):
     if heroe is not None:
         form = HeroeCard(obj=heroe)
         if request.method == 'POST':
-            print('post')
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+                return redirect(request.url)
+
         return render_template('heroe.html', form=form, heroe=heroe)
     return render_template('404.html',name=name), 404
 
@@ -62,3 +80,7 @@ def heroe_delete(id_heroes):
         return heroes_list('danger')
     else:
         return render_template('heroe.html', heroe=heroe)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']

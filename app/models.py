@@ -2,6 +2,7 @@ from app import db
 from sqlalchemy import ForeignKey
 
 
+
 class Heroes(db.Model):
     __tablename__ = "db_heroes"
 
@@ -9,6 +10,8 @@ class Heroes(db.Model):
     name = db.Column(db.String(250), nullable=False, unique=True)
     cost = db.Column(db.Integer, nullable=False)
     role = db.Column(db.Integer, nullable=False)
+    # image = db.Column(db.String(500))
+
 
 
 class Stats(db.Model):
